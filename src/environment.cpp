@@ -49,17 +49,27 @@ void simpleHighway(pcl::visualization::PCLVisualizer::Ptr& viewer)
     Lidar* lidar = new Lidar(cars, 0);
     pcl::PointCloud<pcl::PointXYZ>::Ptr pointcloud = lidar -> scan();
     // renderPointCloud(viewer, pointcloud, "PointCloud", Color(1, 0, 0));
-    renderPointCloud(viewer, pointcloud, "PointCloud", Color(1, 0, 0));
-    renderPointCloud(viewer, pointcloud, "PointCloud", Color(1, 0, 0));
+    // renderPointCloud(viewer, pointcloud, "PointCloud", Color(1, 0, 0));
+    // renderPointCloud(viewer, pointcloud, "PointCloud", Color(1, 0, 0));
     // renderRays(viewer, lidar->position, pointcloud);
     // TODO:: Create point processor
     ProcessPointClouds<pcl::PointXYZ>* pointProcessor = new ProcessPointClouds<pcl::PointXYZ>();
     std::pair<typename pcl::PointCloud<pcl::PointXYZ>::Ptr, typename pcl::PointCloud<pcl::PointXYZ>::Ptr> segResult = pointProcessor ->SegmentPlane(pointcloud, 100, 0.2);
-    renderPointCloud(viewer, segResult.first, "obstCloud", Color(1, 0, 0));
+    // renderPointCloud(viewer, segResult.first, "obstCloud", Color(1, 0, 0));
     renderPointCloud(viewer, segResult.second, "planeCloud", Color(0, 1, 0));
 
+    std::vector<pcl::PointCloud<pcl::PointXYZ>::Ptr> cloudClusters = pointProcessor->Clustering(segResult.first, 1.0, 3, 30);
+    int clusterId = 0;
+    std::vector<Color> colors = {Color(1,0,0), Color(0,1,0), Color(0,0,1)};
 
-    
+    for(pcl::PointCloud<pcl::PointXYZ>::Ptr cluster : cloudClusters)
+    {
+        std::cout << "cluster size ";
+        pointProcessor->numPoints(cluster);
+        renderPointCloud(viewer,cluster,"obstCloud"+std::to_string(clusterId),colors[clusterId]);
+        ++clusterId;
+    }
+
 }
 
 
