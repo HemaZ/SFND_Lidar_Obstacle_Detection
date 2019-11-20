@@ -1,0 +1,14 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "build hello world on WSL",
+        "type": "shell",
+        "command": "cd ~/Sensor Fusion for Enterprise v1.0.0/SFND_Lidar_Obstacle_Detection/build && make",
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      }
+    ]
+  }
