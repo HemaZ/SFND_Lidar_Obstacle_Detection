@@ -150,33 +150,6 @@ src/environment.cpp.s:
 	$(MAKE) -f CMakeFiles/environment.dir/build.make CMakeFiles/environment.dir/src/environment.cpp.s
 .PHONY : src/environment.cpp.s
 
-src/processPointClouds.o: src/processPointClouds.cpp.o
-
-.PHONY : src/processPointClouds.o
-
-# target to build an object file
-src/processPointClouds.cpp.o:
-	$(MAKE) -f CMakeFiles/environment.dir/build.make CMakeFiles/environment.dir/src/processPointClouds.cpp.o
-.PHONY : src/processPointClouds.cpp.o
-
-src/processPointClouds.i: src/processPointClouds.cpp.i
-
-.PHONY : src/processPointClouds.i
-
-# target to preprocess a source file
-src/processPointClouds.cpp.i:
-	$(MAKE) -f CMakeFiles/environment.dir/build.make CMakeFiles/environment.dir/src/processPointClouds.cpp.i
-.PHONY : src/processPointClouds.cpp.i
-
-src/processPointClouds.s: src/processPointClouds.cpp.s
-
-.PHONY : src/processPointClouds.s
-
-# target to generate assembly for a file
-src/processPointClouds.cpp.s:
-	$(MAKE) -f CMakeFiles/environment.dir/build.make CMakeFiles/environment.dir/src/processPointClouds.cpp.s
-.PHONY : src/processPointClouds.cpp.s
-
 src/render/render.o: src/render/render.cpp.o
 
 .PHONY : src/render/render.o
@@ -216,9 +189,6 @@ help:
 	@echo "... src/environment.o"
 	@echo "... src/environment.i"
 	@echo "... src/environment.s"
-	@echo "... src/processPointClouds.o"
-	@echo "... src/processPointClouds.i"
-	@echo "... src/processPointClouds.s"
 	@echo "... src/render/render.o"
 	@echo "... src/render/render.i"
 	@echo "... src/render/render.s"
